@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+    content="Dr.Hair: Reconstructing Scalp-Connected Hair Strands without Pre-training via Differentiable Rendering of Line Segments">
+  <meta name="keywords" content="Dr.Hair, Hair, Strand, Differentiable Rendering">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dr.Hair: Reconstructing Scalp-Connected Hair Strands without Pre-training via Differentiable Rendering of Line
+    Segments</title>
+
+  <style>
+    .hr {
+      width: 100%;
+      height: 1px;
+      margin: 48px 0;
+      background-color: #d6dbdf;
+    }
+  </style>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <link rel="stylesheet" href="./assets/css/bulma.min.css">
+  <link rel="stylesheet" href="./assets/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./assets/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./assets/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="./assets/css/index.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+
+  <!-- custom css file  -->
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="stylesheet" href="./assets/css/twentytwenty.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <!-- <link rel="icon" href="./assets/pac_man.svg"> -->
+  <link rel="icon" href="./assets/img/favicon_head.ico">
+</head>
+
+<body>
+
+  <section class="section">
+
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <img src="./assets/img/logo_black.svg">
+          <h1 class="title is-2 publication-title">
+            Dr.Hair: Reconstructing Scalp-Connected Hair Strands without Pre-training via Differentiable Rendering of
+            Line Segments
+          </h1>
+          <div class="is-size-5 publication-authors">
+            <div class="author-block">
+              <div class="author-portrait">
+                <img class="img-fluid mb-0" src="./assets/img/takimoto.apng" alt="">
+              </div>
+              <a href="https://www.linkedin.com/in/yusuke-takimoto-b54542b1" target="_blank">Yusuke
+                Takimoto</a><sup>1</sup>
+            </div>
+            <div class="author-block">
+              <div class="author-portrait">
+                <img class="img-fluid mb-0" src="./assets/img/takehara.apng" alt="">
+              </div>
+              <a href="https://scholar.google.com/citations?user=dhJeVSUAAAAJ" target="_blank">Hikari
+                Takehara</a><sup>1</sup>
+            </div>
+            <div class="author-block">
+              <div class="author-portrait">
+                <img class="img-fluid mb-0" src="./assets/img/sato.apng" alt="">
+              </div>
+              <a href="https://sato-hiroyuki.jp/" target="_blank">Hiroyuki Sato</a><sup>1</sup>
+            </div>
+            <div class="author-block">
+              <div class="author-portrait">
+                <img class="img-fluid mb-0" src="./assets/img/zhu.apng" alt="">
+              </div>
+              <a href="https://zzhat0706.github.io/PersonalPage/" target="_blank">Zihao Zhu</a><sup>1,2</sup>
+            </div>
+            <div class="author-block">
+              <div class="author-portrait">
+                <img class="img-fluid mb-0" src="./assets/img/zheng.apng" alt="">
+              </div>
+              <a href="http://www.bozheng-lab.com/" target="_blank">Bo Zheng</a><sup>1</sup>
+            </div>
+
+          </div>
+
+          <div class="is-size-6 publication-authors">
+            <i>"Hair Portraits" dyed in virtual vivid color are depicted above the author's names</i>
+          </div><br>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Huawei Technologies Japan K.K.</span>&nbsp;&nbsp;
+            <span class="author-block"><sup>2</sup>Keio University</span>
+          </div>
+
+          <br>
+          <div class="is-size-4 publication-authors">
+            <span class="author-block">CVPR 2024</span>
+          </div>
+
+          <br>
+          <div class="column is-centered has-text-centered">
+            <img style="width: 100%;" src="./assets/teaser.png">
+          </div>
+          <p>
+            <!-- Results of existing strand-based 3D reconstruction methods and our method tested with the data captured by a multi-camera system. 
+            In the upper row, color and colored arrows represent 3D orientation of hair strands. The overlaid black arrows were drawn manually
+            to visualize rough orientations. The lower row shows individual strands with random color. LPMVS and Strand Integration failed to 
+            estimate consistent direction, and their strands are too short not to connect to the scalp. The absolute orientation of strands 
+            estimated by NeuralHaircut is mostly the opposite of the actual hair orientation. Our method demonstrates better precision in 
+            reconstructing the directional flow of scalp-connected hair.  -->
+            Results of existing strand-based 3D reconstruction methods and our method tested with the data captured by a
+            multi-camera system.
+            Dr.Hair demonstrates better precision in reconstructing the directional flow of scalp-connected hair.
+          </p>
+          <br>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+
+              <!-- arXiv Link. -->
+              <span class="link-block">
+                <a href="" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+
+              <!-- Video Link. -->
+              <span class="link-block">
+                <a href="https://www.youtube.com/watch?v=HI4zNfFm3uI" target="_blank"
+                  class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- Video -->
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column">
+          <h2 class="title is-3">Full Video</h2>
+          <div class="publication-video">
+            <iframe src="https://www.youtube.com/embed/HI4zNfFm3uI?si=ks-jceYk6K4EsK1F" title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </section>
+
+  <!-- Abstract. -->
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              In the film and gaming industries, achieving a realistic hair appearance typically involves the use of
+              strands originating from the scalp.
+              However, reconstructing these strands from observed surface images of hair presents significant
+              challenges.
+              The difficulty in acquiring Ground Truth (GT) data has led state-of-the-art learning-based methods to rely
+              on pre-training with manually prepared synthetic CG data.
+              This process is not only labor-intensive and costly but also introduces complications due to the domain
+              gap when compared to real-world data.
+              In this study, we propose an optimization-based approach that eliminates the need for pre-training.
+              Our method represents hair strands as line segments growing from the scalp and optimizes them using a
+              novel differentiable rendering algorithm.
+              To robustly optimize a substantial number of slender explicit geometries, we introduce 3D orientation
+              estimation utilizing global optimization, strand initialization based on Laplace's equation, and
+              reparameterization that leverages geometric connectivity and spatial proximity.
+              Unlike existing optimization-based methods, our method is capable of reconstructing internal hair flow in
+              an absolute direction.
+              Our method exhibits robust and accurate inverse rendering, surpassing the quality of existing methods and
+              significantly improving processing speed.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- Pipeline -->
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column">
+          <h2 class="title is-3">Pipeline</h2>
+          <img style="width: 100%;" src="./assets/ppl.png">
+        </div>
+      </div>
+    </div>
+    </div>
+    <br>
+    <div class="container is-max-desktop">
+      <div class="multi-vid has-text-centered">
+        <div class="column">
+          <h2 class="title is-4">Initialization</h2>
+          <div class="publication-video">
+            <iframe src="./assets/img/pipeline_0.mp4" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+            </iframe>
+          </div>
+        </div>
+        <div class="column">
+          <h2 class="title is-4">DR-based Optimization</h2>
+          <div class="publication-video">
+            <iframe src="./assets/img/pipeline_1.mp4" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+            </iframe>
+          </div>
+        </div>
+      </div>
+      <p>
+        Our approach combines traditional real-time rendering techniques with recent advances in differentiable
+        rendering.
+        First, we fit a template to a raw mesh. Next, we compute consistent 3D orientations from 2D orientation images
+        and initialize guide strands based on a differential equation. Finally,optimization based on differentiable
+        rendering
+        is applied by leveraging the hierarchical relationship between guides and children.
+      </p>
+    </div>
+  </section>
+
+  <!-- Video -->
+  <section class="section">
+
+    <div class="columns is-centered has-text-centered">
+      <div class="column">
+        <h2 class="title is-3 ">Comparison with Existing Methods</h2>
+      </div>
+    </div>
+
+    <div class="container is-max-desktop">
+      <div class="multi-vid has-text-centered">
+        <div class="column">
+          <h2 class="title is-4">Re-rendering</h2>
+          <div class="publication-video">
+            <iframe src="./assets/img/rerendering.mp4" frameborder="0" allow="autoplay; encrypted-media"
+              allowfullscreen>
+            </iframe>
+          </div>
+        </div>
+        <!-- <div class="column">
+        <h2 class="title is-3">Random Color</h2>
+        <div class="publication-video">
+          <iframe src="./assets/img/randomcolor.mp4"
+                   frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+          </iframe>
+        </div>
+      </div> -->
+        <div class="column">
+          <h2 class="title is-4">3D Orientation in 360°</h2>
+          <div class="publication-video">
+            <iframe src="./assets/img/orientation.mp4" frameborder="0" allow="autoplay; encrypted-media"
+              allowfullscreen>
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+
+    <div class="container is-max-desktop">
+      <div class="multi-vid has-text-centered">
+        <div class="column">
+          <h2 class="title is-4">Length Editing</h2>
+          <div class="publication-video">
+            <iframe src="./assets/img/length.mp4" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+            </iframe>
+          </div>
+        </div>
+        <div class="column">
+          <h2 class="title is-4">Physics Simulation</h2>
+          <div class="publication-video">
+            <iframe src="./assets/img/physics.mp4" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Visualizations -->
+  <section class="hero is-light is-small">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h2 class="title is-3">Qualitative Results</h2>
+
+          <div id="results-carousel" class="carousel results-carousel">
+
+            <div class="item">
+              <div class="twentytwenty-container" data-orientation="vertical" ratio="1.5">
+                <div class="video">
+                  <img src="./assets/img/subj1/rl1.jpg">
+                </div>
+                <div class="video">
+                  <img src="./assets/img/subj1/rs1.jpg">
+                </div>
+              </div>
+            </div>
+
+            <div class="item">
+              <div class="twentytwenty-container1" data-orientation="vertical" ratio="1.5">
+                <div class="video">
+                  <img src="./assets/img/subj1/ss1.jpg">
+                </div>
+                <div class="video">
+                  <img src="./assets/img/subj1/sd1.jpg">
+                </div>
+              </div>
+            </div>
+
+            <div class="item">
+              <div class="twentytwenty-container2" data-orientation="vertical" ratio="1.5">
+                <div class="video">
+                  <img src="./assets/img/subj1/ls1.jpg">
+                </div>
+                <div class="video">
+                  <img src="./assets/img/subj1/ld1.jpg">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="results-carousel" class="carousel results-carousel">
+
+            <div class="item">
+              <div class="twentytwenty-container" data-orientation="vertical" ratio="1.5">
+                <div class="video">
+                  <img src="./assets/img/subj1/rl2.jpg">
+                </div>
+                <div class="video">
+                  <img src="./assets/img/subj1/rs2.jpg">
+                </div>
+              </div>
+            </div>
+
+            <div class="item">
+              <div class="twentytwenty-container1" data-orientation="vertical" ratio="1.5">
+                <div class="video">
+                  <img src="./assets/img/subj1/ss2.jpg">
+                </div>
+                <div class="video">
+                  <img src="./assets/img/subj1/sd2.jpg">
+                </div>
+              </div>
+            </div>
+
+            <div class="item">
+              <div class="twentytwenty-container2" data-orientation="vertical" ratio="1.5">
+                <div class="video">
+                  <img src="./assets/img/subj1/ls2.jpg">
+                </div>
+                <div class="video">
+                  <img src="./assets/img/subj1/ld2.jpg">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="results-carousel" class="carousel results-carousel">
+
+            <div class="item">
+              <div class="twentytwenty-container" data-orientation="vertical" ratio="1.5">
+                <div class="video">
+                  <img src="./assets/img/subj2/rl1.jpg">
+                </div>
+                <div class="video">
+                  <img src="./assets/img/subj2/rs1.jpg">
+                </div>
+              </div>
+            </div>
+
+            <div class="item">
+              <div class="twentytwenty-container1" data-orientation="vertical" ratio="1.5">
+                <div class="video">
+                  <img src="./assets/img/subj2/ss1.jpg">
+                </div>
+                <div class="video">
+                  <img src="./assets/img/subj2/sd1.jpg">
+                </div>
+              </div>
+            </div>
+
+            <div class="item">
+              <div class="twentytwenty-container2" data-orientation="vertical" ratio="1.5">
+                <div class="video">
+                  <img src="./assets/img/subj2/ls1.jpg">
+                </div>
+                <div class="video">
+                  <img src="./assets/img/subj2/ld1.jpg">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="results-carousel" class="carousel results-carousel">
+
+            <div class="item">
+              <div class="twentytwenty-container" data-orientation="vertical" ratio="1.5">
+                <div class="video">
+                  <img src="./assets/img/subj2/rl2.jpg">
+                </div>
+                <div class="video">
+                  <img src="./assets/img/subj2/rs2.jpg">
+                </div>
+              </div>
+            </div>
+
+            <div class="item">
+              <div class="twentytwenty-container1" data-orientation="vertical" ratio="1.5">
+                <div class="video">
+                  <img src="./assets/img/subj2/ss2.jpg">
+                </div>
+                <div class="video">
+                  <img src="./assets/img/subj2/sd2.jpg">
+                </div>
+              </div>
+            </div>
+
+            <div class="item">
+              <div class="twentytwenty-container2" data-orientation="vertical" ratio="1.5">
+                <div class="video">
+                  <img src="./assets/img/subj2/ls2.jpg">
+                </div>
+                <div class="video">
+                  <img src="./assets/img/subj2/ld2.jpg">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </section>
+
+  <!-- Video -->
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column">
+          <h2 class="title is-3">"CVPR" Drawing by DR-based Hair Growing</h2>
+          <div class="publication-video">
+            <iframe src="./assets/img/cvpr_drawing.mp4" frameborder="0" allow="autoplay; encrypted-media"
+              allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </section>
+
+
+
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">BibTeX</h2>
+      <pre><code>@InProceedings{takimoto2024drhair,
+      title     = {Dr.Hair: Reconstructing Scalp-Connected Hair Strands without Pre-training via Differentiable Rendering of Line Segments},
+      author    = {Takimoto, Yusuke and Takehara, Hikari and Sato, Hiroyuki and Zhu, Zihao and Zheng, Bo},
+      booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+      year      = {2024}
+    }</code></pre>
+    </div>
+  </section>
+
+
+  <footer class="footer">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <div class="columns is-centered">
+            <p>
+              This website template is borrowed from <a href="https://github.com/nerfies/nerfies.github.io"
+                target="_blank">Nerfies</a> and <a href="https://github.com/sczhou/ProPainter_website"
+                target="_blank">ProPainter</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    </div>
+  </footer>
+
+  <!-- custom js file  -->
+  <script defer src="./assets/js/fontawesome.all.min.js"></script>
+  <script src="./assets/js/bulma-carousel.min.js"></script>
+  <script src="./assets/js/bulma-slider.min.js"></script>
+  <script src="./assets/js/index.js"></script>
+  <script src="./assets/js/jquery.event.move.js"></script>
+  <script src="./assets/js/jquery.twentytwenty.js"></script>
+  <script src="./assets/js/jquery.twentytwenty1.js"></script>
+  <script src="./assets/js/jquery.twentytwenty2.js"></script>
+  <script>
+    $(function () {
+      $(".twentytwenty-container").twentytwenty();
+      $(".twentytwenty-container1").twentytwenty1();
+      $(".twentytwenty-container2").twentytwenty2();
+      // $(".twentytwenty-container", "#results-carousel").twentytwenty({default_offset_pct: 0.5, ratio: 0.5});
+    });
+  </script>
+</body>
+
+</html>
