@@ -69,10 +69,10 @@ body {
     font-weight: bolder;
 }
 
-.publication-authors {
+/* .publication-authors {
   display:flex;
   justify-content:space-evenly;
-}
+} */
 
 .publication-authors a {
    color: hsl(204, 86%, 53%) !important;
@@ -86,6 +86,14 @@ body {
   display: inline-block;
 }
 
+.author-portrait {
+  overflow: hidden;
+  width: 140px;
+  height: 140px;
+  font-size: 0;
+  margin: auto;
+}
+
 .author-portrait video {
   border-radius: 40%;
   width: 250px;
@@ -94,7 +102,7 @@ body {
 
 .author-portrait img {
     border-radius: 0%;
-    width: 130px;
+    width: 140px;
     position: relative;
 }
 
